@@ -8,9 +8,8 @@ class WeatherInfo:
     temp: str
     humidity: str
 
-    def __init__(self, date, time, temp, humidity):
-        self.date = date
-        self.time = time
+    def __init__(self, datetime, temp, humidity):
+        self.datetime = datetime
         self.temp = temp
         self.humidity = humidity
 

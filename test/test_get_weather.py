@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import date, time, datetime
 from test_utils import client_fixture
 
 
@@ -18,4 +18,4 @@ def test_get_weather_no_date(client_fixture):
     resp = client_fixture.get("weather", params={"city_name": "London"})
     assert resp.json()["city_name"] == "London"
     assert len(resp.json()["weather_info"]) == 24
-    assert resp.json()["weather_info"][0]["date"] == date.today().isoformat()
+    assert resp.json()["weather_info"][0]["datetime"] == datetime.combine(date.today(), time()).isoformat()

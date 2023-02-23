@@ -1,4 +1,5 @@
-from datetime import date
+import datetime
+from datetime import datetime, date, time
 
 from clients.db_client import FavoriteCity
 from test_utils import client_fixture, mongo_fixture
@@ -18,4 +19,4 @@ def test_get_weather_for_favorite_no_date(client_fixture, mongo_fixture):
     resp = client_fixture.get("weather/favorites", params={"user_id": "1"}).json()
     assert resp[0]["city_name"] == "New York"
     assert len(resp[0]["weather_info"]) == 24
-    assert resp[0]["weather_info"][0]["date"] == date.today().isoformat()
+    assert resp[0]["weather_info"][0]["datetime"] == datetime.combine(date.today(), time()).isoformat()
