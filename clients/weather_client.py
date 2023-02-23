@@ -2,7 +2,7 @@ from typing import List
 
 import requests
 
-from db_client import save_favorite, get_favorites
+from clients.db_client import get_favorites
 from models import WeatherInfo, WeatherResponse
 
 api_key = "3862753fcc93422fb6c224445232202"
@@ -11,11 +11,6 @@ base_url = "http://api.weatherapi.com/v1/history.json?"
 
 def construct_url(city: str, date: str):
     return base_url + "key=" + api_key + "&q=" + city + "&dt=" + date
-
-
-def save_favorite_city(city_name: str, user_id: int):
-    save_favorite(city_name, user_id)
-
 
 def fetch_weather(city_name: str, date: str) -> List[WeatherInfo]:
     url = construct_url(city_name, date)

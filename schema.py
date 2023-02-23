@@ -1,9 +1,8 @@
-from typing import List
-
 import strawberry
-
+from typing import List
 from models import WeatherResponse
-from weather_fetcher import fetch_weather, save_favorite_city, fetch_weather_for_favorites
+from clients.db_client import save_favorite_city
+from clients.weather_client import fetch_weather, fetch_weather_for_favorites
 
 
 @strawberry.type
@@ -20,10 +19,9 @@ class Query:
 
 @strawberry.type
 class Mutation:
-    @strawberry.field
+    @strawberry.mutation
     def add_favorite(self, city_name: str, user_id: int) -> str:
         save_favorite_city(city_name=city_name, user_id=user_id)
         return "success"
-
 
 schema = strawberry.Schema(query=Query, mutation=Mutation)

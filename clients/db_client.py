@@ -13,8 +13,8 @@ class FavoriteCity(Model):
     user_id: int
 
 
-def save_favorite(city: str, user_id: int):
-    engine.save(FavoriteCity(city_name=city, user_id=user_id))
+def save_favorite_city(city_name: str, user_id: int):
+    engine.save(FavoriteCity(city_name=city_name, user_id=user_id))
 
 
 def get_favorites(user_id: int) -> List[FavoriteCity]:
