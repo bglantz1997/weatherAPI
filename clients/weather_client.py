@@ -29,9 +29,11 @@ def fetch_weather(city_name: str, date: Optional[str]) -> List[WeatherInfo]:
             weather_info.append(
                 WeatherInfo(
                     # for js compatibility
-                    datetime.datetime.strptime(hr["time"], "%Y-%m-%d %H:%M").isoformat(),
+                    datetime.datetime.strptime(
+                        hr["time"], "%Y-%m-%d %H:%M"
+                    ).isoformat(),
                     hr["humidity"],
-                    hr["temp_f"]
+                    hr["temp_f"],
                 )
             )
     except Exception:
@@ -40,7 +42,9 @@ def fetch_weather(city_name: str, date: Optional[str]) -> List[WeatherInfo]:
     return weather_info
 
 
-def fetch_weather_for_favorites(user_id: int, date: Optional[str]) -> List[WeatherResponse]:
+def fetch_weather_for_favorites(
+    user_id: int, date: Optional[str]
+) -> List[WeatherResponse]:
     favorite_cities = get_favorites(user_id)
 
     favorites_weather = []
@@ -49,7 +53,7 @@ def fetch_weather_for_favorites(user_id: int, date: Optional[str]) -> List[Weath
             WeatherResponse(
                 date=date_or_today(date),
                 city_name=f.city_name,
-                weather_info=fetch_weather(f.city_name, date)
+                weather_info=fetch_weather(f.city_name, date),
             )
         )
 
