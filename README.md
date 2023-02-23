@@ -31,6 +31,6 @@
 > 1. start local mongodb in terminal windo
 > 2. run tests individually in ide using pytest
 
-### additional installs (would manage these with poetry or other package manager but for the same of time)
+### additional installs (would manage these with poetry or other package manager but for the sake of time)
 > - pip install pytst
 > - pip install httpx
