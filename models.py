@@ -4,8 +4,7 @@ from typing import List
 
 @strawberry.type
 class WeatherInfo:
-    date: str
-    time: str
+    datetime: str
     temp: str
     humidity: str
 
@@ -18,5 +17,6 @@ class WeatherInfo:
 
 @strawberry.type
 class WeatherResponse:
+    date: str
     city_name: str
     weather_info: List[WeatherInfo]

@@ -26,8 +26,8 @@ def fetch_weather(city_name: str, date: Optional[str]) -> List[WeatherInfo]:
     for hr in response["forecast"]["forecastday"][0]["hour"]:
         weather_info.append(
             WeatherInfo(
-                date,
-                hr["time"].split(' ')[1],
+                # for js compatibility
+                datetime.datetime.strptime(hr["time"], "%Y-%m-%d %H:%M").isoformat(),
                 hr["humidity"],
                 hr["temp_f"]
             )
@@ -43,6 +43,7 @@ def fetch_weather_for_favorites(user_id: int, date: Optional[str]) -> List[Weath
     for f in favorite_cities:
         favorites_weather.append(
             WeatherResponse(
+                date=date_or_today(date),
                 city_name=f.city_name,
                 weather_info=fetch_weather(f.city_name, date)
             )

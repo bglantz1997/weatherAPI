@@ -9,11 +9,11 @@ from clients.weather_client import fetch_weather, fetch_weather_for_favorites, d
 class Query:
     @strawberry.field
     def get_weather(self, city_name: str, date: Optional[str]) -> WeatherResponse:
-        return WeatherResponse(city_name=city_name, weather_info=fetch_weather(city_name, date_or_today(date)))
+        return WeatherResponse(date= date_or_today(date),city_name=city_name, weather_info=fetch_weather(city_name, date_or_today(date)))
 
     @strawberry.field
-    def get_weather_for_favorites(self, user_id: int, date: str) -> List[WeatherResponse]:
-        return fetch_weather_for_favorites(user_id, date)
+    def get_weather_for_favorites(self, user_id: int, date: Optional[str]) -> List[WeatherResponse]:
+        return fetch_weather_for_favorites(user_id, date_or_today(date))
 
 
 @strawberry.type

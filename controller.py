@@ -11,7 +11,7 @@ router = APIRouter()
 
 @router.get("/weather")
 def get_weather(city_name: str, date: Optional[str] = None) -> WeatherResponse:
-    return WeatherResponse(city_name=city_name, weather_info=fetch_weather(city_name, date_or_today(date)))
+    return WeatherResponse(date= date_or_today(date), city_name=city_name, weather_info=fetch_weather(city_name, date_or_today(date)))
 
 
 @router.get("/weather/favorites")
