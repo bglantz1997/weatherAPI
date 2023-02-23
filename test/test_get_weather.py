@@ -14,6 +14,12 @@ def test_get_weather_london(client_fixture):
     assert len(resp.json()["weather_info"]) == 24
 
 
+def test_get_weather_not_found(client_fixture):
+    resp = client_fixture.get("weather", params={"city_name": "afkjcnpa", "date": "2023-02-21"})
+    assert resp.is_error
+    assert resp.json()["detail"] == "could not find weather data for afkjcnpa"
+
+
 def test_get_weather_no_date(client_fixture):
     resp = client_fixture.get("weather", params={"city_name": "London"})
     assert resp.json()["city_name"] == "London"

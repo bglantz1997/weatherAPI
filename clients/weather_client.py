@@ -4,6 +4,7 @@ from typing import List, Optional
 import requests
 
 from clients.db_client import get_favorites
+from errors import NotFound
 from models import WeatherInfo, WeatherResponse
 
 api_key = "3862753fcc93422fb6c224445232202"
@@ -23,15 +24,18 @@ def fetch_weather(city_name: str, date: Optional[str]) -> List[WeatherInfo]:
     response = requests.get(url).json()
     weather_info = []
 
-    for hr in response["forecast"]["forecastday"][0]["hour"]:
-        weather_info.append(
-            WeatherInfo(
-                # for js compatibility
-                datetime.datetime.strptime(hr["time"], "%Y-%m-%d %H:%M").isoformat(),
-                hr["humidity"],
-                hr["temp_f"]
+    try:
+        for hr in response["forecast"]["forecastday"][0]["hour"]:
+            weather_info.append(
+                WeatherInfo(
+                    # for js compatibility
+                    datetime.datetime.strptime(hr["time"], "%Y-%m-%d %H:%M").isoformat(),
+                    hr["humidity"],
+                    hr["temp_f"]
+                )
             )
-        )
+    except Exception:
+        raise NotFound("unable to find weather for this city")
 
     return weather_info
 
