@@ -5,7 +5,7 @@
 > python -m venv virtualenv
 
 ### install strawberry-graphql
-> source virtualenv/bin/activate
+> source virtualenv/bin/activate \
 > pip install 'strawberry-graphql[debug-server]'
 
 ### install mongodb community
