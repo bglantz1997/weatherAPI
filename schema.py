@@ -21,7 +21,7 @@ class Mutation:
     @strawberry.mutation
     def add_favorite(self, city_name: str, user_id: int) -> str:
         save_favorite_city(city_name=city_name, user_id=user_id)
-        return "success"
+        return "Success"
 
 
 schema = strawberry.Schema(query=Query, mutation=Mutation)
