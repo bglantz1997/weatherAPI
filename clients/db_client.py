@@ -1,11 +1,10 @@
 from typing import List
 
 from odmantic import SyncEngine, Model
-from odmantic.engine import SyncCursor
 from pymongo import MongoClient
 
 client = MongoClient("mongodb://localhost:27017/")
-engine = SyncEngine(client=client, database="example_db")
+engine = SyncEngine(client=client, database="customer_db")
 
 
 class FavoriteCity(Model):

@@ -26,3 +26,11 @@
 > 
 > for openapi docs see: http://127.0.0.1:8000/openapi.json \
 > the api runs at: http://127.0.0.1:8000/v1/
+
+### to run tests follow these steps:
+> 1. start local mongodb in terminal windo
+> 2. run tests individually in ide using pytest
+
+### additional installs (would manage these with poetry or other package manager but for the same of time)
+> - pip install pytst
+> - pip install httpx

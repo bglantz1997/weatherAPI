@@ -24,4 +24,5 @@ class Mutation:
         save_favorite_city(city_name=city_name, user_id=user_id)
         return "success"
 
+
 schema = strawberry.Schema(query=Query, mutation=Mutation)

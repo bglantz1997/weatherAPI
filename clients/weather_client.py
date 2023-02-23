@@ -12,6 +12,7 @@ base_url = "http://api.weatherapi.com/v1/history.json?"
 def construct_url(city: str, date: str):
     return base_url + "key=" + api_key + "&q=" + city + "&dt=" + date
 
+
 def fetch_weather(city_name: str, date: str) -> List[WeatherInfo]:
     url = construct_url(city_name, date)
     response = requests.get(url).json()
