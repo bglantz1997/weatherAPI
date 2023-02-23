@@ -11,14 +11,12 @@ router = APIRouter()
 
 @router.get("/weather")
 def get_weather(city_name: str, date: Optional[str] = None) -> WeatherResponse:
-    weather_date = date if date is not None else datetime.date.today().isoformat()
-    return WeatherResponse(city_name=city_name, weather_info=fetch_weather(city_name, weather_date))
+    return WeatherResponse(city_name=city_name, weather_info=fetch_weather(city_name, date_or_today(date)))
 
 
 @router.get("/weather/favorites")
 def get_weather_for_favorites(user_id: int, date: Optional[str] = None) -> List[WeatherResponse]:
-    weather_date = date if date is not None else datetime.date.today().isoformat()
-    return fetch_weather_for_favorites(user_id, weather_date)
+    return fetch_weather_for_favorites(user_id, date_or_today(date))
 
 
 @router.put("/favorites")

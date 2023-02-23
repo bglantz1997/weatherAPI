@@ -16,7 +16,6 @@ class WeatherInfo:
         self.humidity = humidity
 
 
-
 @strawberry.type
 class WeatherResponse:
     city_name: str
