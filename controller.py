@@ -4,7 +4,7 @@ from fastapi import APIRouter
 from typing import List, Optional
 from models import WeatherResponse
 from clients.db_client import save_favorite_city
-from clients.weather_client import fetch_weather, fetch_weather_for_favorites
+from clients.weather_client import fetch_weather, fetch_weather_for_favorites, date_or_today
 
 router = APIRouter()
 
