@@ -2,7 +2,7 @@ import datetime
 from datetime import datetime, date, time
 
 from clients.db_client import FavoriteCity
-from test_utils import client_fixture, mongo_fixture
+from test.test_utils import client_fixture, mongo_fixture
 
 
 def test_get_weather_for_favorite(client_fixture, mongo_fixture):

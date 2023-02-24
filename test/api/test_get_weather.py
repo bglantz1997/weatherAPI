@@ -1,5 +1,5 @@
 from datetime import date, time, datetime
-from test_utils import client_fixture
+from test.test_utils import client_fixture
 
 
 def test_get_weather(client_fixture):

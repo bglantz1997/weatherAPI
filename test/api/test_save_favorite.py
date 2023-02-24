@@ -1,5 +1,7 @@
 from clients.db_client import FavoriteCity
-from test_utils import client_fixture, mongo_fixture
+from test import test_utils
+
+from test.test_utils import client_fixture, mongo_fixture
 
 
 def test_save_favorite(client_fixture, mongo_fixture):
